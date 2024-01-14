@@ -11,9 +11,12 @@ datasource db {
 }
 
 model Students {
-  id    Int    @id @default(autoincrement())
-  email String @unique
-  name  String
-  cpf   String
-  ra    String @unique
+  id             Int    @id @default(autoincrement())
+  cpf            String
+  name           String
+  email          String
+  academicRecord String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
 }
