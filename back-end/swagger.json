@@ -1,7 +1,7 @@
 {
 	"openapi": "3.0.0",
 	"info": {
-		"title": "A+ Challenge",
+		"title": "+A Challenge",
 		"version": "1.0.0"
 	},
 	"schemes": ["https", "http"],
