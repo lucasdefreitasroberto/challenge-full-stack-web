@@ -21,7 +21,7 @@ export const errorHandler = (
 	}
 
 	if (err instanceof ZodError) {
-		return res.status(HttpStatus.BAD_REQUEST).send(
+		return res.status(HttpStatus.UNPROCESSABLE_ENTITY).send(
 			new PresenterFactory({
 				isValid: false,
 				message: parseZodErrors(err),

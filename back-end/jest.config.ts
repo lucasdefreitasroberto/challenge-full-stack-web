@@ -3,6 +3,7 @@ import type { JestConfigWithTsJest } from "ts-jest";
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 const jestConfig: JestConfigWithTsJest = {
 	preset: "ts-jest",
+	globalTeardown: "<rootDir>/tests/jest.teardown.ts",
 	testEnvironment: "node",
 	testMatch: ["**/tests/**/*.test.ts", "**/tests/**/*.spec.ts"],
 	testPathIgnorePatterns: ["./node_modules/"],
