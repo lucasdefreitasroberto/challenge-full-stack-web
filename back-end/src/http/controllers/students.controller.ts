@@ -8,7 +8,7 @@ import { GetStudentService } from "../../services/students/get-student.service";
 import { HttpStatus } from "../../helpers/http-status-code";
 
 export namespace StudentsController {
-	export const get = async (req: Request, res: Response) => {
+	export const getOne = async (req: Request, res: Response) => {
 		const result = await GetStudentService.execute(+req.params.id);
 		return res
 			.status(HttpStatus.OK)
