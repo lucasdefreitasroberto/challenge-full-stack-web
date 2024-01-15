@@ -1,7 +1,7 @@
 import { prisma } from "@/config/prisma-client";
 import { HttpException } from "@/factories/http-error.factory";
 import { HttpStatus } from "@/helpers/http-status-code";
-import { UpdateStudentDto } from "@/http/validations/update-student.validation";
+import { UpdateStudentDto } from "@/http/validations/students/update-student.validation";
 import { Students } from "@prisma/client";
 
 export namespace UpdateStudentService {

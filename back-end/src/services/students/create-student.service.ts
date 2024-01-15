@@ -1,7 +1,7 @@
 import { prisma } from "../../config/prisma-client";
 import { HttpStatus } from "@/helpers/http-status-code";
 import { HttpException } from "@/factories/http-error.factory";
-import { CreateStudentDto } from "@/http/validations/create-student.validation";
+import { CreateStudentDto } from "@/http/validations/students/create-student.validation";
 import { Students } from "@prisma/client";
 
 export namespace CreateStudentService {
