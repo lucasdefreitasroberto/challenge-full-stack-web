@@ -1,14 +1,20 @@
 import { Router } from "express";
 import { StudentsController } from "../controllers/students.controller";
 import validator from "../middlewares/dto-validator.middleware";
-import { students } from "../validations";
+import { students, adminAuth } from "../validations";
+import { JwtAuthMiddleware } from "../middlewares/jwt-auth.middleware";
+import { AuthController } from "../controllers/auth.controller";
 
-export default (): Router => {
+const privateRoutes = (): Router => {
 	const router: Router = Router();
-
 	// students
 	router.get("/students", StudentsController.list);
-	router.get("/students/:id", validator(students.get), StudentsController.get);
+
+	router.get(
+		"/students/:id",
+		validator(students.getOne),
+		StudentsController.getOne
+	);
 	router.post(
 		"/students",
 		validator(students.create),
@@ -25,5 +31,15 @@ export default (): Router => {
 		StudentsController.destroy
 	);
 
+	return router;
+};
+
+export default (): Router => {
+	const router: Router = Router();
+	const secret: string = process.env.JWT_SECRET || "secret";
+
+	router.post("/auth/login", validator(adminAuth.login), AuthController.login);
+
+	router.use(JwtAuthMiddleware(secret), privateRoutes());
 	return router;
 };
