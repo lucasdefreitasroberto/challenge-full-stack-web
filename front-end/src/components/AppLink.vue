@@ -22,6 +22,14 @@ const isActive = computed(() => route.path === props.to)
 }
 
 .routerLink.active {
-    color: green;
+    color: rgb(74 222 128);
 }
+
+/* .routerLink {
+    @apply no-underline;
+
+    &.active {
+        @apply text-green-400;
+    }
+} */
 </style>

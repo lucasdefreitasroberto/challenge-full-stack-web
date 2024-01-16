@@ -7,23 +7,25 @@ const rail = ref<boolean>(true)
 
 <template>
     <v-app-bar flat class="border-b" theme="dark">
-        <v-app-bar-title>Grupo A+</v-app-bar-title>
+        <v-app-bar-title class=""></v-app-bar-title>
+        <v-btn icon="mdi-calendar" size="large"></v-btn>
     </v-app-bar>
 
     <v-navigation-drawer permanent :rail="rail" @click="rail = false" theme="dark">
-        <v-list-item nav>
+        <v-list-item title="Módulo Acadêmico" nav>
             <template v-slot:append>
                 <v-btn
                     variant="text"
                     :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'"
                     @click.stop="rail = !rail"
-                ></v-btn>
+                />
             </template>
         </v-list-item>
+        <v-divider />
 
         <v-list>
-            <AppLink to="/" icon="mdi-view-dashboard">Home</AppLink>
-            <AppLink to="/about" icon="mdi-forum">About</AppLink>
+            <AppLink to="/home" icon="mdi-view-dashboard">Home</AppLink>
+            <AppLink to="/students" icon="mdi-account-group">Alunos</AppLink>
         </v-list>
     </v-navigation-drawer>
 </template>

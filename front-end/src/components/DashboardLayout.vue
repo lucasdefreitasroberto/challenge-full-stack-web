@@ -7,7 +7,7 @@ import AppNavigation from './AppNavigation.vue'
         <AppNavigation />
         <v-main>
             <v-container>
-                <slot />
+                <RouterView />
             </v-container>
         </v-main>
     </v-app>
