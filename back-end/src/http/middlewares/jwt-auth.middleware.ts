@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import { verify } from "jsonwebtoken";
 import { HttpException } from "@/factories/http-error.factory";
 import { Request, Response, NextFunction } from "express";

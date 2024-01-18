@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
-import { HttpException } from "../../factories/http-error.factory";
-import { PresenterFactory } from "../../factories/presenter.factory";
+import { Request, Response, NextFunction } from "express";
+import { HttpException } from "@/factories/http-error.factory";
+import { PresenterFactory } from "@/factories/presenter.factory";
 import { ZodError } from "zod";
 import { HttpStatus } from "@/helpers/http-status-code";
 import parseZodErrors from "@/helpers/parse-zod-errors";
@@ -29,7 +29,10 @@ export const errorHandler = (
 		);
 	}
 
-	return res
-		.status(500)
-		.send(new PresenterFactory({ isValid: false, message: ["internal server error"] }));
+	return res.status(500).send(
+		new PresenterFactory({
+			isValid: false,
+			message: ["internal server error"],
+		})
+	);
 };

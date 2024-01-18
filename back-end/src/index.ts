@@ -1,4 +1,4 @@
-import { prisma } from "./config/prisma-client";
+import { prisma } from "@/config/prisma-client";
 import app from "./http/app";
 
 const port = Number(process.env.PORT || 3000);

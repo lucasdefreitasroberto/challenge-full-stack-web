@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { PresenterFactory } from "../../factories/presenter.factory";
-import { CreateStudentService } from "../../services/students/create-student.service";
-import { UpdateStudentService } from "../../services/students/update-student.service";
-import { ListStudentService } from "../../services/students/list-student.service";
-import { DeleteStudentService } from "../../services/students/delete-student.service";
-import { GetStudentService } from "../../services/students/get-student.service";
-import { HttpStatus } from "../../helpers/http-status-code";
+import { PresenterFactory } from "@/factories/presenter.factory";
+import { CreateStudentService } from "@/services/students/create-student.service";
+import { UpdateStudentService } from "@/services/students/update-student.service";
+import { ListStudentService } from "@/services/students/list-student.service";
+import { DeleteStudentService } from "@/services/students/delete-student.service";
+import { GetStudentService } from "@/services/students/get-student.service";
+import { HttpStatus } from "@/helpers/http-status-code";
 import { PaginationFactory } from "@/factories/pagination.factory";
 
 export namespace StudentsController {

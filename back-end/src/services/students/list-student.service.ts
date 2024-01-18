@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client";
-import { prisma } from "../../config/prisma-client";
+import { prisma } from "@/config/prisma-client";
 
 export namespace ListStudentService {
 	export const execute = async (

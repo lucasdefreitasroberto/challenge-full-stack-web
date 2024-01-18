@@ -1,5 +1,5 @@
 import { Students } from "@prisma/client";
-import { prisma } from "../../config/prisma-client";
+import { prisma } from "@/config/prisma-client";
 import { HttpException } from "@/factories/http-error.factory";
 import { HttpStatus } from "@/helpers/http-status-code";
 

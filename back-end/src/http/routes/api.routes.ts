@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { StudentsController } from "../controllers/students.controller";
-import validator from "../middlewares/dto-validator.middleware";
-import { students, adminAuth } from "../validations";
-import { JwtAuthMiddleware } from "../middlewares/jwt-auth.middleware";
-import { AuthController } from "../controllers/auth.controller";
+import { StudentsController } from "@/http/controllers/students.controller";
+import validator from "@/http/middlewares/dto-validator.middleware";
+import { students, adminAuth } from "@/http/validations";
+import { JwtAuthMiddleware } from "@/http/middlewares/jwt-auth.middleware";
+import { AuthController } from "@/http/controllers/auth.controller";
 
 const privateRoutes = (): Router => {
 	const router: Router = Router();
