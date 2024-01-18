@@ -12,6 +12,7 @@ const jestConfig: JestConfigWithTsJest = {
 	coverageProvider: "v8",
 	coveragePathIgnorePatterns: [
 		"/node_modules/",
+		"src/@types",
 		"src/config",
 		"src/factories",
 		"src/helpers",

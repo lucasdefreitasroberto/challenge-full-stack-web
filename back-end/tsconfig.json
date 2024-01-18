@@ -6,7 +6,7 @@
 		"strict": true,
 		"baseUrl": "./",
 		"outDir": "./dist",
-		"types": ["node", "express"],
+		"types": ["node", "express", "jest"],
 		"typeRoots": ["src/@types", "./node_modules/@types"],
 		"skipLibCheck": true,
 		"esModuleInterop": true,
