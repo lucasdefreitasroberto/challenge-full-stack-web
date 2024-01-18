@@ -2,6 +2,8 @@ import { HttpStatus } from "@/helpers/http-status-code";
 import { HttpException } from "@/factories/http-error.factory";
 import { AdminAuthenticationDto } from "@/http/validations/auth/admin-auth.validation";
 import jwt from "jsonwebtoken";
+import { prisma } from "@/config/prisma-client";
+import { compare } from "bcrypt";
 
 export namespace AdminAuthService {
 	export const execute = async ({
@@ -9,17 +11,18 @@ export namespace AdminAuthService {
 		password,
 	}: AdminAuthenticationDto): Promise<any> => {
 		const secret = process.env.JWT_SECRET as string;
-		const admUsername = process.env.ADMIN_USERNAME;
-		const admPassword = process.env.ADMIN_PASSWORD;
 		const expiration = 3.6e6 * 48;
 
-		if (admUsername !== username || admPassword !== password)
-			throw new HttpException(
-				"wrong credentials",
-				HttpStatus.UNPROCESSABLE_ENTITY
-			);
+		const user = await prisma.users.findUnique({ where: { username } });
 
-		const token = jwt.sign({ username }, secret, {
+		if (!user) throw new HttpException("user not found", HttpStatus.NOT_FOUND);
+
+		const areEqual = await compare(password, user.password);
+
+		if (!areEqual)
+			throw new HttpException("invalid credentials", HttpStatus.UNAUTHORIZED);
+
+		const token = jwt.sign({ id: user.id, username }, secret, {
 			expiresIn: expiration,
 		});
 
@@ -28,7 +31,7 @@ export namespace AdminAuthService {
 		expiresIn.setTime(expiresIn.getTime() + expiration);
 
 		const response = { token, expiresIn: expiresIn.toISOString() };
-		
+
 		return response;
 	};
 }
