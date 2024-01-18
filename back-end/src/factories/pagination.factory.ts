@@ -1,10 +1,10 @@
 import { PresenterFactory } from "./presenter.factory";
 
-export class PaginationFactory<T> extends PresenterFactory<T> {
+export class PaginationFactory extends PresenterFactory {
 	public readonly pagination: { page: number; perPage: number; total: number };
 
 	constructor(payload: {
-		data: T[];
+		data: any[];
 		pagination: { page: number; perPage: number; total: number };
 	}) {
 		super({ data: payload.data });

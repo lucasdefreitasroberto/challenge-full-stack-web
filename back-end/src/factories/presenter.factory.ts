@@ -1,11 +1,15 @@
-export class PresenterFactory<T> {
-	public readonly result: T[] | undefined;
+export class PresenterFactory {
+	public readonly result: any[] | undefined;
 
 	public readonly message?: string[];
 
 	public readonly isValid: boolean = true;
 
-	constructor(payload: { data?: T[]; message?: string[]; isValid?: boolean }) {
+	constructor(payload: {
+		data?: any[];
+		message?: string[];
+		isValid?: boolean;
+	}) {
 		const { data, message, isValid } = payload;
 
 		this.result = data || undefined;
