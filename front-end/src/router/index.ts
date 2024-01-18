@@ -3,6 +3,9 @@ import LoginView from '../views/LoginView.vue'
 import HomeView from '../views/HomeView.vue'
 import StudentsView from '../views/StudentsView.vue'
 import DashboardLayout from '../components/DashboardLayout.vue'
+import CreateStudentVue from '@/views/CreateStudent.vue'
+import UpdateStudentVue from '@/views/UpdateStudentView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 
 const loginBeforeEnter = () => {
     const accessToken = localStorage.getItem('accessToken')
@@ -19,17 +22,22 @@ const router = createRouter({
 
     routes: [
         {
+            path: '/:pathMatch(.*)*',
+            name: 'not-found',
+            component: NotFoundView
+        },
+        {
             name: 'login',
             path: '/login',
             component: LoginView,
-            // beforeEnter: loginBeforeEnter
+            beforeEnter: loginBeforeEnter
         },
         {
             path: '/',
             name: 'dashboard',
             redirect: 'home',
             component: DashboardLayout,
-            // beforeEnter: dashboardBeforeEnter,
+            beforeEnter: dashboardBeforeEnter,
             children: [
                 {
                     path: '/home',
@@ -40,6 +48,16 @@ const router = createRouter({
                     path: '/students',
                     name: 'students',
                     component: StudentsView
+                },
+                {
+                    path: '/students/create',
+                    name: 'createStudent',
+                    component: CreateStudentVue
+                },
+                {
+                    path: '/students/:id/update',
+                    name: 'updateStudent',
+                    component: UpdateStudentVue
                 }
             ]
         }
