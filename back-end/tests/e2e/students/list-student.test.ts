@@ -24,6 +24,7 @@ describe(`GET /api/students`, () => {
 	test("should get a student list and return status code 200", async () => {
 		const { body, statusCode } = await request
 			.get("/api/students")
+			.query({ page: 1, perPage: 10, search: "Jon D" })
 			.auth(token, { type: "bearer" });
 
 		expect(body.isValid).toBe(true);

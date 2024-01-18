@@ -11,7 +11,7 @@ const privateRoutes = (): Router => {
 	router.get("/auth/verify", AuthController.verify);
 
 	// students
-	router.get("/students", StudentsController.list);
+	router.get("/students", validator(students.list), StudentsController.list);
 
 	router.get(
 		"/students/:id",
