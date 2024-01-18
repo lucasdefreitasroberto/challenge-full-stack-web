@@ -11,4 +11,10 @@ export namespace AuthController {
 			.status(HttpStatus.OK)
 			.send(new PresenterFactory({ data: [result] }));
 	};
+
+	export const verify = async (req: Request, res: Response) => {
+		return res
+			.status(HttpStatus.OK)
+			.send(new PresenterFactory({ data: [req.user] }));
+	};
 }

@@ -7,6 +7,9 @@ import { AuthController } from "../controllers/auth.controller";
 
 const privateRoutes = (): Router => {
 	const router: Router = Router();
+
+	router.get("/auth/verify", AuthController.verify);
+
 	// students
 	router.get("/students", StudentsController.list);
 

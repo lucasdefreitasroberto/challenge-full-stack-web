@@ -8,9 +8,13 @@
 		"strict": true,
 		"skipLibCheck": true,
 		"resolveJsonModule": true,
+		"types": ["express"],
+		"typeRoots": ["./src/@types"],
+		"baseUrl": "./",
 		"paths": {
-			"@/*": ["./src/*"]
+			"@/*": ["src/*"]
 		}
 	},
-	"include": ["./src/", "./tests/"]
+	"include": ["src/**/*.ts", "tests/**/*.ts"],
+	"exclude": ["node_modules"]
 }

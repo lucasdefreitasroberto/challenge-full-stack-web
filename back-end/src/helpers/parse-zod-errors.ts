@@ -2,11 +2,13 @@ import { ZodError } from "zod";
 
 const parseZodErrors = (error: ZodError) => {
 	let errors: any = {};
+
 	const formattedErrors: any = error.format();
 
 	for (const key in formattedErrors) {
 		if (formattedErrors.hasOwnProperty(key)) {
 			const errorMessages = formattedErrors[key]._errors;
+
 			if (errorMessages) {
 				errors[key] = errorMessages;
 			}

@@ -31,5 +31,5 @@ export const errorHandler = (
 
 	return res
 		.status(500)
-		.send(new PresenterFactory({ isValid: false, message: [err.message] }));
+		.send(new PresenterFactory({ isValid: false, message: ["internal server error"] }));
 };

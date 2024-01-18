@@ -15,7 +15,10 @@ export const JwtAuthMiddleware =
 		const [, token] = authHeader.split(" ");
 
 		try {
-			verify(token, secret);
+			const decoded = verify(token, secret);
+
+			req.user = decoded;
+
 			return next();
 		} catch {
 			throw new HttpException(
