@@ -3,7 +3,7 @@ import AppNavigation from './AppNavigation.vue'
 </script>
 
 <template>
-    <v-app theme="test">
+    <v-app theme="dark">
         <AppNavigation />
         <v-main>
             <v-container>
