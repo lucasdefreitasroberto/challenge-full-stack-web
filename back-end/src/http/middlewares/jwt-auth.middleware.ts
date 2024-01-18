@@ -9,7 +9,10 @@ export const JwtAuthMiddleware =
 		const authHeader = req.headers.authorization;
 
 		if (!authHeader) {
-			throw new HttpException("JWT token is missing", 422);
+			throw new HttpException(
+				"JWT token is missing",
+				HttpStatus.UNPROCESSABLE_ENTITY
+			);
 		}
 
 		const [, token] = authHeader.split(" ");
@@ -21,9 +24,6 @@ export const JwtAuthMiddleware =
 
 			return next();
 		} catch {
-			throw new HttpException(
-				"Invalid JWT token",
-				HttpStatus.UNPROCESSABLE_ENTITY
-			);
+			throw new HttpException("Invalid JWT token", HttpStatus.UNAUTHORIZED);
 		}
 	};
