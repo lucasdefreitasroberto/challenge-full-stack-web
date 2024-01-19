@@ -1,5 +1,5 @@
+import prisma from "@/config/prisma-client";
 import { Prisma } from "@prisma/client";
-import { prisma } from "@/config/prisma-client";
 
 export namespace ListStudentService {
 	export const execute = async (
@@ -36,6 +36,7 @@ export namespace ListStudentService {
 				},
 				take: pagination.perPage,
 				skip: (pagination.page - 1) * pagination.perPage,
+				orderBy: { id: "desc" },
 			});
 
 		return { count, students };

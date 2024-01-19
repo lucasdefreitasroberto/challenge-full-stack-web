@@ -2,7 +2,7 @@ import { HttpStatus } from "@/helpers/http-status-code";
 import { HttpException } from "@/factories/http-error.factory";
 import { AdminAuthenticationDto } from "@/http/validations/auth/admin-auth.validation";
 import jwt from "jsonwebtoken";
-import { prisma } from "@/config/prisma-client";
+import prisma from "@/config/prisma-client";
 import { compare } from "bcrypt";
 
 export namespace AdminAuthService {
