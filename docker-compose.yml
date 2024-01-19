@@ -14,6 +14,7 @@ services:
       - mynetwork
 
   prisma-migrate:
+    image: prisma_migrate
     container_name: prisma_migrate
     build: 
       context: ./back-end
@@ -38,6 +39,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
+      - prisma-migrate
       - postgres
     networks:
       - mynetwork
