@@ -3,6 +3,17 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
+	"scripts": {
+		"build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
+		"prod": "node ./dist/index.js",
+		"dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+		"test": "dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test -- npx prisma db seed && dotenv -e .env.test -- jest --forceExit",
+		"test:unit": "dotenv -e .env.test -- jest --selectProjects unit",
+		"test:e2e": "dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test -- npx prisma db seed && dotenv -e .env.test -- jest --selectProjects e2e"
+	},
+	"prisma": {
+		"seed": "ts-node prisma/seed.ts"
+	},
 	"devDependencies": {
 		"@babel/cli": "^7.23.4",
 		"@babel/core": "^7.23.7",
@@ -28,16 +39,6 @@
 		"tsc": "^2.0.4",
 		"tsconfig-paths": "^4.2.0",
 		"typescript": "^5.3.3"
-	},
-	"scripts": {
-		"build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
-		"dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
-		"test": "dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test -- npx prisma db seed && dotenv -e .env.test -- jest --forceExit",
-		"test:unit": "dotenv -e .env.test -- jest --selectProjects unit",
-		"test:e2e": "dotenv -e .env.test -- npx prisma migrate deploy && dotenv -e .env.test -- npx prisma db seed && dotenv -e .env.test -- jest --selectProjects e2e"
-	},
-	"prisma": {
-		"seed": "ts-node prisma/seed.ts"
 	},
 	"dependencies": {
 		"@prisma/client": "^5.8.0",
