@@ -1,6 +1,6 @@
 import supertest from "supertest";
 import app from "../../../src/http/app";
-import { adminPassword, createUser } from "../../test-helpers";
+import { adminPassword } from "../../test-helpers";
 
 describe(`POST /api/auth`, () => {
 	let request: any;
@@ -9,7 +9,6 @@ describe(`POST /api/auth`, () => {
 
 	beforeAll(async () => {
 		request = supertest(app());
-		await createUser();
 	});
 
 	test("should return token and status code 200", async () => {

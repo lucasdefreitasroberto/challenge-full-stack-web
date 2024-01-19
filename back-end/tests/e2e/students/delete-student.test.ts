@@ -1,4 +1,4 @@
-import { prisma } from "../../../src/config/prisma-client";
+import prisma from "../../../src/config/prisma-client";
 import { login, createStudent } from "../../test-helpers";
 import supertest from "supertest";
 import app from "../../../src/http/app";
