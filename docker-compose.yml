@@ -1,0 +1,67 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: academic-app
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "4002"
+    # ports:
+    #   - "5959:5432"
+    networks:
+      - mynetwork
+
+  prisma-migrate:
+    container_name: prisma_migrate
+    build: 
+      context: ./back-end
+      dockerfile: Dockerfile.migration
+
+    environment:
+      DB_HOST: "postgres"
+      DB_USER: "postgres"
+      DB_PASSWORD: "4002"
+      DATABASE_URL: "postgresql://postgres:4002@postgres:5432/academic-app?schema=public"
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
+
+  backend:
+    image: backend
+    container_name: backend
+    restart: always
+    build:
+      context: ./back-end
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - mynetwork
+    environment:
+      DATABASE_URL: "postgresql://postgres:4002@postgres:5432/academic-app?schema=public"
+      JWT_SECRET: "ATECHNICALTESTSECRET"
+
+  frontend:
+    image: frontend
+    container_name: frontend
+    build:
+      context: ./front-end
+      args:
+        VITE_API_URL: "http://localhost:3000/api"
+    ports:
+      - "5000:80"
+    depends_on:
+      - backend
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
+
+
+  
