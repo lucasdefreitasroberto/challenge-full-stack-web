@@ -17,6 +17,7 @@ const typingTimeout = ref<NodeJS.Timeout | null>()
 watch(searchInput, async (newValue) => {
     if ((newValue && newValue?.length >= 3) || !newValue) {
         loading.value = true
+
         if (typingTimeout.value) {
             clearTimeout(typingTimeout.value)
         }
@@ -103,7 +104,7 @@ const handleUpdateTable = async (value: any) => {
                 </template>
 
                 <template v-slot:[`item.actions`]="{ item }">
-                    <v-row class="d-flex ga-2">
+                    <v-row class="d-flex ga-2" :style="{ minWidth: '100px' }">
                         <v-btn
                             class="pa-0"
                             @click="router.push({ path: `/students/${item.id}/update` })"
@@ -122,5 +123,9 @@ const handleUpdateTable = async (value: any) => {
 .v-btn {
     min-width: 0;
     padding: 10px !important;
+}
+
+::v-deep .v-data-table__td {
+    text-wrap: nowrap !important;
 }
 </style>

@@ -36,7 +36,7 @@ const handleDeleteStudent = async () => {
 }
 </script>
 <template>
-    <v-dialog transition="dialog-top-transition" max-width="600">
+    <v-dialog transition="dialog-top-transition" max-width="600" scrim="grey-darken-2">
         <template v-slot:activator="{ props }">
             <v-btn class="pa-0" v-bind="props">
                 <v-icon icon="mdi-delete" />
