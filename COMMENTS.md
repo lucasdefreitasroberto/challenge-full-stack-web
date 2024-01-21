@@ -29,7 +29,7 @@ yarn install
 Execute as migrações do Prisma:
 
 ```shell
-yarn prisma migration deploy
+yarn prisma migrate deploy
 ```
 
 Realize as operações de seeding:
